@@ -1,4 +1,3 @@
-Certainly! Here's the updated version without the linked websites:
 
 ---
 
