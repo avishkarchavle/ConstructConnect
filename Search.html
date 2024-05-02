@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Products</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    #err{
+        color: red;
+    }
+    body {
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .search-bar {
+      margin-bottom: 20px;
+    }
+    .product-item {
+      list-style: none;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .product-item img {
+      max-width: 100%;
+      height: auto;
+    }
+    .product-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .call-button {
+      margin-top: 10px
+      
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h2 class="text-primary">Search Products</h2>
+
+    <!-- Sample array of product details from the home page -->
+    <script>
+      var homePageItems = [
+        {
+          name: 'Aggregate',
+          price: '₹3000-5000/Tonn',
+          location: 'City, State',
+        },
+        {
+          name: 'Bricks',
+          price: '₹7-15/Piece',
+          location: 'City, State',
+        },
+        {
+          name: 'River sand',
+          price: '₹800-2500/Tonn',
+          location: 'City, State',
+        },
+        {
+          name: 'Cement',
+          price: '₹3500-5500/Tonn',
+          location: 'City, State',
+        },
+        {
+          name: 'Concrete',
+          price: '₹250-350/Tonn',
+          location: 'City, State',
+        },
+        {
+          name: 'Steel',
+          price: '₹300-450/Tonn',
+          location: 'City, State',
+        },
+        {
+          name: 'Wooden Doors',
+          price: '₹50',
+          location: 'City, State',
+        },
+        {
+          name: 'Wooden Doors',
+          price: '₹50',
+          location: 'City, State',
+        },
+        {
+          name: 'UPVC Window',
+          price: '₹50',
+          location: 'City, State',
+        },
+        {
+          name: 'Fiber Doors',
+          price: '₹50',
+          location: 'City, State',
+        },
+        {
+          name: 'Windows',
+          price: '₹50',
+          location: 'City, State',
+        },
+        {
+          name: 'Wall Putti',
+          price: '₹50',
+          location: 'City, State',
+        },
+        {
+          name: 'Emulsion Paints',
+          price: '₹50',
+          location: 'City, State',
+        },
+        {
+          name: 'Waterproof Paints',
+          price: '₹50',
+          location: 'City, State',
+        },
+        {
+          name: 'Primer',
+          price: '₹50',
+          location: 'City, State',
+        },
+        {
+          name: 'Paint Thinner',
+          price: '₹50',
+          location: 'City, State',
+        },
+        // Add more products as needed
+      ];
+    </script>
+
+    <!-- Search Bar -->
+    <div class="input-group mb-3 search-bar">
+      <input type="text" class="form-control" placeholder="Search for products..." id="searchInput">
+      <button class="btn btn-primary " type="button" onclick="searchProducts()">Search</button>
+    </div>
+
+    <!-- Display Search Results -->
+    <div id="searchResults" class="mb-3"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-eZpGdC5uVAPF6aa9F2ttG2F5x6J1exmL3/J9C1jBXQReCEb3+6P/WFfVAEl6Nn6d" crossorigin="anonymous"></script>
+
+  <script>
+    function searchProducts() {
+      var searchInput = document.getElementById('searchInput').value.toLowerCase();
+
+      // Filter items based on search input
+      var searchResults = homePageItems.filter(function(item) {
+        return item.name.toLowerCase().includes(searchInput);
+      });
+
+      // Display search results
+      displaySearchResults(searchResults);
+    }
+
+    function displaySearchResults(results) {
+      var searchResultsDiv = document.getElementById('searchResults');
+      searchResultsDiv.innerHTML = ''; // Clear previous results
+
+      if (results.length === 0) {
+        searchResultsDiv.innerHTML = '<p id="err">No results found.</p>';
+      } else {
+        results.forEach(function(result) {
+          var productItem = document.createElement('div');
+          productItem.className = 'product-item';
+
+          var productDetails = document.createElement('div');
+          productDetails.className = 'product-details';
+
+         
+
+          var productName = document.createElement('p');
+          productName.textContent = result.name;
+
+          var productPrice = document.createElement('p');
+          productPrice.textContent = 'Price: ' + result.price;
+
+          var productLocation = document.createElement('p');
+          productLocation.textContent = 'Location: ' + result.location;
+
+         
+       
+          productDetails.appendChild(productName);
+          productDetails.appendChild(productPrice);
+          productDetails.appendChild(productLocation);
+        
+
+          productItem.appendChild(productDetails);
+
+          searchResultsDiv.appendChild(productItem);
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>

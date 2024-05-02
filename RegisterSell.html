@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            position: relative; /* Add position relative for the form */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Style for the success message */
+        .success-message {
+            border-top: 1px solid #4caf50; /* Add top border */
+            margin-top: 20px; /* Add top margin */
+            padding-top: 10px; /* Add top padding */
+            color: #4caf50; /* Change color */
+            text-align: center; /* Center the text */
+            font-weight: bold; /* Make it bold */
+            display: none; /* Hide by default */
+        }
+
+        /* Show the success message */
+        .show {
+            display: block; /* Show the message */
+        }
+    </style>
+</head>
+<body>
+   
+    <form id="registrationForm" style="margin-left: 20px;">
+        <h2>Seller Register</h2>
+        <label for="sellerUsername">Username:</label>
+        <input type="text" id="sellerUsername" placeholder="Create username starting with s/"  name="sellerUsername" required>
+
+        <label for="customerEmail">Email:</label>
+        <input type="text" id="customerEmail" placeholder="Enter your Email Id" name="customerEmail" required>
+
+        <label for="customerNO">Phone No:</label>
+        <input type="text" id="customerNum" placeholder="Enter a 10 digit phone number " name="customerNum" required>
+
+        <label for="sellerPassword">Password:</label>
+        <input type="password" id="sellerPassword" placeholder="Use a strong password" name="sellerPassword" required>
+
+        <button type="button" onclick="registerUser()">Register</button>
+
+        <!-- Success message placeholder -->
+        <div id="successMessage" class="success-message"></div>
+    </form>
+
+    <script>
+        function registerUser() {
+            var sellerUsername = document.getElementById('sellerUsername').value;
+
+            // Check if the username starts with "s/"
+            if (sellerUsername.startsWith('s/')) {
+                // Display success message
+                var successMessage = document.getElementById('successMessage');
+                successMessage.textContent = 'User with username ' + sellerUsername + ' registered successfully!';
+                successMessage.classList.add('show'); // Show the success message
+                setTimeout(function() {
+                    successMessage.classList.remove('show'); // Hide the success message after 3 seconds
+                     window.location.href = 'Index.html';
+                }, 1500);
+                // Reset the form
+                document.getElementById('registrationForm').reset();
+            } else {
+                // Display error message
+                alert('Username must start with "s/". Please enter a valid username.');
+            }
+        }
+    </script>
+</body>
+</html>

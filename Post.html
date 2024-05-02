@@ -1,0 +1,105 @@
+<!-- sellerHome.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body class="container mt-5">
+
+  <h2 class="text-primary">Seller Home</h2>
+
+  <!-- Product Form -->
+  <form id="productForm">
+    <div class="mb-3">
+      <label for="category" class="form-label">Category:</label>
+      <input type="text" class="form-control" id="category" name="category" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="imageLink" class="form-label">Image Link:</label>
+      <input type="text" class="form-control" id="imageLink" name="imageLink" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Price:</label>
+      <input type="text" class="form-control" id="price" name="price" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="type" class="form-label">Product Type:</label>
+      <input type="text" class="form-control" id="type" name="type" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="location" class="form-label">Location:</label>
+      <input type="text" class="form-control" id="location" name="location" required>
+    </div>
+
+    <button type="button" class="btn btn-primary" onclick="addProduct()">Add Product</button>
+  </form>
+
+  <!-- Display Products -->
+  <div class="mt-4">
+    <h4 class="text-primary">Products</h4>
+    <div id="productLists">
+      <!-- Product lists will be displayed here -->
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-eZpGdC5uVAPF6aa9F2ttG2F5x6J1exmL3/J9C1jBXQReCEb3+6P/WFfVAEl6Nn6d" crossorigin="anonymous"></script>
+
+  <script>
+    function addProduct() {
+      // Get product details
+      var category = document.getElementById('category').value;
+      var imageLink = document.getElementById('imageLink').value;
+      var price = document.getElementById('price').value;
+      var type = document.getElementById('type').value;
+      var location = document.getElementById('location').value;
+
+      // Create product card
+      var productCard = document.createElement('div');
+      productCard.className = 'card mb-3';
+      productCard.style.width = '18rem';
+
+      var img = document.createElement('img');
+      img.src = imageLink;
+      img.className = 'card-img-top';
+      img.alt = 'Product Image';
+      productCard.appendChild(img);
+
+      var cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
+
+      var productType = document.createElement('h5');
+      productType.className = 'card-title';
+      productType.textContent = type;
+      cardBody.appendChild(productType);
+
+      var productPrice = document.createElement('p');
+      productPrice.className = 'card-text';
+      productPrice.textContent = 'Price: ₹' + price;
+      cardBody.appendChild(productPrice);
+
+      var productLocation = document.createElement('p');
+      productLocation.className = 'card-text';
+      productLocation.textContent = 'Location: ' + location;
+      cardBody.appendChild(productLocation);
+
+      productCard.appendChild(cardBody);
+
+      // Append product card to the product lists
+      var productLists = document.getElementById('productLists');
+      productLists.appendChild(productCard);
+
+      // Optional: Clear the form after adding the product
+      document.getElementById('productForm').reset();
+    }
+  </script>
+
+</body>
+</html>

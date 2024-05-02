@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Customization</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body class="container mt-5">
+
+  <h2 class="text-primary">Select Product and Customize Units</h2>
+
+  <form id="productForm">
+    <!-- Product Type Dropdown -->
+    <div class="mb-3">
+      <label for="productType" class="form-label">Select Product Type:</label>
+      <select class="form-select" id="productType" name="productType">
+        <option value="Bricks added to bag ">Jamal dada chunawala<span style='font-size:100px;'>&#9989;</span> - Mumbai - ₹325/ltr</option>
+        <option value="Bricks added to bag "> Meera enterprises <span style='font-size:100px;'>&#9989;</span> - Navi Mumbai - ₹1200/ltr</option>
+        <option value="Bricks added to bag ">Kanti stores <span style='font-size:100px;'>&#9989;</span> - Mumbai - ₹900/ltr</option>
+      </select>
+    </div>
+
+    <!-- Units Customization -->
+    <div class="mb-3">
+      <label for="units" class="form-label">Customize Units:</label>
+      <input type="number" class="form-control" id="units" name="units" min="1" value="1">
+    </div>
+
+    <!-- Add to Bag Button -->
+    <button type="button" class="btn btn-primary" onclick="addToBag()">Add to Bag</button>
+    <br>
+    <hr>
+ 
+  </form>
+
+  <!-- Shopping Bag Display -->
+ <!-- Include this button under the "Shopping Bag" section in your existing HTML code -->
+<div class="mt-3">
+  <h4 class="text-primary">Shopping Bag</h4>
+  <button class="btn btn-info" onclick="viewBag()">View Bag</button>
+
+  <ul id="shoppingBag" class="list-group"></ul>
+</div>
+
+    
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-eZpGdC5uVAPF6aa9F2ttG2F5x6J1exmL3/J9C1jBXQReCEb3+6P/WFfVAEl6Nn6d" crossorigin="anonymous"></script>
+
+ <script>
+   function viewBag() {
+    // Redirect to the checkout page
+    window.location.href = 'Checkout.html';
+  }
+    function addToBag() {
+      // Get selected product type and units
+      var productType = document.getElementById('productType').value;
+      var units = document.getElementById('units').value;
+
+      // Create a new list item for the shopping bag
+      var listItem = document.createElement('li');
+      listItem.className = 'list-group-item';
+      listItem.textContent = `${units} units of ${productType}`;
+
+      // Append the list item to the shopping bag
+      document.getElementById('shoppingBag').appendChild(listItem);
+
+      // Store the added item in sessionStorage
+      var bagItems = JSON.parse(sessionStorage.getItem('bagItems')) || [];
+      bagItems.push(`${units} units of ${productType}`);
+      sessionStorage.setItem('bagItems', JSON.stringify(bagItems));
+
+      // Optional: Clear the form after adding to the bag
+      document.getElementById('productForm').reset();
+    }
+</script>
+
+</body>
+</html>

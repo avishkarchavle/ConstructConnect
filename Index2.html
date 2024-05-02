@@ -1,0 +1,85 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form>
+
+      <br>
+     
+       <h1><center>ConstructConnect</center></h1>
+    
+      
+        <button class="btn btn-primary" type="submit"><a href="RegisterCust.html" class="button">Sign In as a Customer</a></button>
+        <br><br>
+        <button class="btn btn-primary" type="submit"><a href="RegisterSell.html" class="button">Sign In as a Seller</a></button>
+        <br>
+        <h2>Login Here</h2>
+       
+        <label for="username">Username or Phone No:</label>
+        <input type="text" id="username" name="username" >
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" >
+
+        <button class="btn btn-primary" type="submit">Log In</button>
+
+        <hr>
+
+        <button class="btn btn-primary" ><a href="Home.html" class="button">UserHome</a></button>
+        <br><br>
+        <button class="btn btn-primary" ><a href="SellerHome.html" class="button">SellerHome</a></button>
+    </form>
+</body>
+</html> 

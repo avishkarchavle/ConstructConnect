@@ -1,0 +1,142 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="color : black">Welcome to ConstructConnect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #092c30;
+        }
+
+        .banner {
+            background-image: url("https://wallpapers.com/images/featured/dark-blue-background-mvcipsajjqo97rk4.jpg"); /* Add your banner image here */
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn-container a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .btn-container button {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        .btn-container button:hover {
+            background-color: #45a049;
+        }
+
+        form {
+            margin-top: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        .login-btn:hover {
+            background-color: #45a049;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="banner">       
+        <h1>Welcome to ConstructConnect</h1>
+    </div>
+    <div class="container">
+        <div class="btn-container">
+            <button><a href="RegisterCust.html">Sign In as a Customer</a></button>
+            <button><a href="RegisterSell.html">Sign In as a Seller</a></button>
+        </div>
+        <form id="loginForm">
+            <h2>Login Here</h2>
+            <label for="username">Username or Phone No:</label>
+            <input type="text" id="username" name="username">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <button class="login-btn" type="button">Log In</button>
+        </form>
+        <!-- <h6><marquee behavior="" direction="" >© Developed by Avishkar Chavle</marquee></h6> -->
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+        });
+
+        document.querySelector('.login-btn').addEventListener('click', function() {
+            // Get username and password values
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Check if username and password match
+            if (username.startsWith('s/')) {
+                // Redirect to seller page
+                window.location.href = 'SellerHome.html';
+            } else if (username.startsWith('c/') ) {
+                // Redirect to customer page
+                window.location.href = 'Home.html';
+            } else {
+                // Handle incorrect credentials (optional)
+                alert('Incorrect username or password. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
