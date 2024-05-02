@@ -7,7 +7,7 @@ ConstructConnect is a comprehensive construction information and technology plat
 
 #Deployed Site 
 
--[Tap Here](#https://vjticonstructconnect.netlify.app/)
+https://vjticonstructconnect.netlify.app/
 
 ## Table of Contents
 
